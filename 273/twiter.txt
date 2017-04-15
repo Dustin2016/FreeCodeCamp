@@ -1,0 +1,17 @@
+{
+  "num1":[
+    "I have come to believe that the whole world is an enigma, a harmless enigma that is made terrible by our own mad attempt to interpret it as though it had an underlying truth.","Umberto Eco"
+  ],
+  "num2":[
+    "I find that the harder I work, the more luck I seem to have.","Thomas Jefferson"
+  ],
+  "num3":[
+    "We are all atheists about most of the gods humanity has ever believed in. Some of us just go one god further.","Richard Dawkins"
+  ],
+  "num4":[
+      "撒反对党萨阿迪","富士康"
+  ],
+  "num5":[
+      "是大量昆德拉","三克拉克的"
+  ]
+}
