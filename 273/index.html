@@ -1,1 +1,95 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>teiter链接</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        #container{
+            width:500px;
+            /*height:300px;*/
+            background-color: #d4ecff;
+            margin:0 auto;
+        }
+        .content{
+            width:100%;
+            /*height:270px;*/
+            /*background-color: #14ff7d;*/
+        }
+        .btn{
+            width:100%;
+            height:30px;
+            /*background-color: #f420ff;*/
+        }
+        .btn #twiter{
+            display:block;
+            float:left;
+            height:30px;
+            width:50px;
+        }
+        .btn #switch{
+            float:right;
+            height:30px;
+            width:50px;
+        }
+        #author{
+            text-align:right;
+        }
+    </style>
+    <script>
+        function random(a,b){
+            return Math.floor(Math.random()*(a-b)+b);
+        }
+        $(document).ready(function(){
+            var dataJson=null;
+            var num=null;
+
+            $.ajax({
+                url:"twiter.txt",
+                success:function(data){
+                    dataJson = JSON.parse( data );
+                    num="num"+random(1,7);
+                    $("#text").html(dataJson[num][0]);
+                    $("#author").html("-"+dataJson[num][1]);
+                },
+                error:function(e){
+                    console.log(e);
+                }
+            });
+
+            $("#switch").on("click",function(){
+                $.ajax({
+                    url:"twiter.txt",
+                    success:function(data){
+                        dataJson = JSON.parse( data );
+                        var num="num"+random(1,7);
+                        $("#text").html(dataJson[num][0]);
+                        $("#author").html("-"+dataJson[num][1]);
+                    },
+                    error:function(e){
+                        console.log(e);
+                    }
+                });
+            });
+            $("#twiter").on("click",function(){
+                $('#twiter').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + dataJson[num][0] + '" ' + dataJson[num][1]));
+                openURL('https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + dataJson[num][0] + '" ' + dataJson[num][1]));
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div class="content">
+            <p><q id="text"></q></p>
+
+            <p id="author"></p>
+        </div>
+        <div class="btn">
+            <a id="twiter" href="javascript:;">分享</a>
+            <button id="switch">切换</button>
+        </div>
+    </div>
+</body>
+</html>
